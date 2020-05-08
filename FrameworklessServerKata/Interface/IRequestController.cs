@@ -2,7 +2,7 @@ using System.Net;
 
 namespace FrameworklessServerKata.Interface
 {
-    public interface IRequestHandler
+    public interface IRequestController
     {
         void Get(HttpListenerRequest request);
         void Create(HttpListenerRequest request);
