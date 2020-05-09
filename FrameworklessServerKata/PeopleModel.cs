@@ -10,5 +10,10 @@ namespace FrameworklessServerKata
         {
             People = new List<Person>{new Person("David")};
         }
+
+        public void Add(Person person)
+        {
+            People.Add(person);
+        }
     }
 }

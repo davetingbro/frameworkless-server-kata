@@ -18,5 +18,22 @@ namespace FrameworklessServerKata.Tests
             var expectedJson = JsonConvert.SerializeObject(new List<Person> {new Person("David")});
             Assert.Equal(expectedJson, resultJson);
         }
+
+        [Fact]
+        public void ShouldAddGivenPersonToPeopleList()
+        {
+            var peopleModel = new PeopleModel();
+
+            peopleModel.Add(new Person("Michael"));
+            var result = peopleModel.People;
+            var expected = new List<Person>
+            {
+                new Person("David"), new Person("Michael")
+            };
+
+            var resultJson = JsonConvert.SerializeObject(result);
+            var expectedJson = JsonConvert.SerializeObject(expected);
+            Assert.Equal(expectedJson, resultJson);
+        }
     }
 }
