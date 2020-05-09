@@ -55,5 +55,12 @@ namespace FrameworklessServerKata.Tests
             var expectedJson = JsonConvert.SerializeObject(expected);
             Assert.Equal(expectedJson, resultJson);
         }
+        
+                
+        [Fact]
+        public void ShouldThrowArgumentException_WhenTryToDeleteDavid()
+        {
+            Assert.Throws<ArgumentException>(() => _peopleModel.Delete("David"));
+        }
     }
 }

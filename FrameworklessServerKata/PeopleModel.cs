@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace FrameworklessServerKata
@@ -5,10 +6,12 @@ namespace FrameworklessServerKata
     public class PeopleModel
     {
         public List<Person> People { get; }
+        private readonly Person _worldOwner;
 
         public PeopleModel()
         {
-            People = new List<Person>{new Person("David")};
+            _worldOwner = new Person("David");
+            People = new List<Person>{_worldOwner};
         }
 
         public void Add(Person person)
@@ -18,6 +21,8 @@ namespace FrameworklessServerKata
 
         public void Delete(string name)
         {
+            if (name == _worldOwner.Name)
+                throw new ArgumentException("Cannot delete world owner");
             People.RemoveAll(p => p.Name == name);
         }
     }
