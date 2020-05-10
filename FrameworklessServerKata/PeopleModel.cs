@@ -25,5 +25,10 @@ namespace FrameworklessServerKata
                 throw new ArgumentException("Cannot delete world owner");
             People.RemoveAll(p => p.Name == name);
         }
+
+        public Person Find(string name)
+        {
+            return People.Find(p => p.Name == name);
+        }
     }
 }

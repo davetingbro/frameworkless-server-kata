@@ -62,5 +62,18 @@ namespace FrameworklessServerKata.Tests
         {
             Assert.Throws<ArgumentException>(() => _peopleModel.Delete("David"));
         }
+
+        [Fact]
+        public void ShouldReturnCorrectPerson_GivenName()
+        {
+            _peopleModel.Add(new Person("Michael"));
+            _peopleModel.Add(new Person("Will"));
+
+            var result = _peopleModel.Find("Will");
+
+            var resultJson = JsonConvert.SerializeObject(result);
+            var expectedJson = JsonConvert.SerializeObject(new Person("Will"));
+            Assert.Equal(expectedJson, resultJson);
+        }
     }
 }
