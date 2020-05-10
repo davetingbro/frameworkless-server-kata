@@ -11,6 +11,7 @@ namespace FrameworklessServerKata
             return url switch
             {
                 "http://localhost:8080/" => new GreetRequestController(),
+                "http://localhost:8080/people" => new PeopleRequestController(),
                 _ => throw new ArgumentException("url not found")
             };
         }
