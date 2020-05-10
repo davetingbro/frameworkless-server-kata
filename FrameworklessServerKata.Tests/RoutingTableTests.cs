@@ -26,5 +26,14 @@ namespace FrameworklessServerKata.Tests
 
             Assert.IsType(expectedType, result);
         }
+
+        [Theory]
+        [InlineData("http://localhost:3000/")]
+        [InlineData("http://localhost:8080/people/fake_person")]
+
+        public void ShouldThrowArgumentException_WhenGivenInvalidUrl(string url)
+        {
+            Assert.Throws<ArgumentException>(() => _routingTable.GetRequestController(url, _people));
+        }
     }
 }
