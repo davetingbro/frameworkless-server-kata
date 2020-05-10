@@ -5,27 +5,27 @@ namespace FrameworklessServerKata.RequestControllers
 {
     public class PersonRequestController : IRequestController
     {
-        public void Get(HttpListenerRequest request)
+        public Response Get(HttpListenerRequest request, PeopleModel peopleModel)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Create(HttpListenerRequest request)
+        public Response Create(HttpListenerRequest request, PeopleModel peopleModel)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(HttpListenerRequest request)
+        public Response Update(HttpListenerRequest request, PeopleModel peopleModel)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(HttpListenerRequest request)
+        public Response Delete(HttpListenerRequest request, PeopleModel peopleModel)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Head(HttpListenerRequest request)
+        public Response Head(HttpListenerRequest request, PeopleModel peopleModel)
         {
             throw new System.NotImplementedException();
         }
