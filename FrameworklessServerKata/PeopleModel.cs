@@ -14,9 +14,9 @@ namespace FrameworklessServerKata
             People = new List<Person>{_worldOwner};
         }
 
-        public void Add(Person person)
+        public void Add(string name)
         {
-            People.Add(person);
+            People.Add(new Person(name));
         }
 
         public void Delete(string name)
