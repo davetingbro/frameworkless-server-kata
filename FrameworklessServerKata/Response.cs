@@ -2,12 +2,12 @@ namespace FrameworklessServerKata
 {
     public class Response
     {
-        public string Message { get; }
+        public string Body { get; }
         public string StatusCode { get; }
 
-        public Response(string message, string statusCode)
+        public Response(string body, string statusCode)
         {
-            Message = message;
+            Body = body;
             StatusCode = statusCode;
         }
     }
