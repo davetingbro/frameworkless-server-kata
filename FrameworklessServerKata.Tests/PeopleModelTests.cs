@@ -27,7 +27,7 @@ namespace FrameworklessServerKata.Tests
         [Fact]
         public void ShouldAddGivenPersonToPeopleList()
         {
-            _peopleModel.Add(new Person("Michael"));
+            _peopleModel.Add("Michael");
             var result = _peopleModel.People;
             var expected = new List<Person>
             {
@@ -42,8 +42,8 @@ namespace FrameworklessServerKata.Tests
         [Fact]
         public void ShouldDeletePersonFromList_GivenName()
         {
-            _peopleModel.Add(new Person("Michael"));
-            _peopleModel.Add(new Person("Will"));
+            _peopleModel.Add("Michael");
+            _peopleModel.Add("Will");
 
             _peopleModel.Delete("Will");
             var expected = new List<Person>
@@ -66,8 +66,8 @@ namespace FrameworklessServerKata.Tests
         [Fact]
         public void ShouldReturnCorrectPerson_GivenName()
         {
-            _peopleModel.Add(new Person("Michael"));
-            _peopleModel.Add(new Person("Will"));
+            _peopleModel.Add("Michael");
+            _peopleModel.Add("Will");
 
             var result = _peopleModel.Find("Will");
 
