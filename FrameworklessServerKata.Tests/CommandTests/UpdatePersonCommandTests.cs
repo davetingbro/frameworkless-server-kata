@@ -20,9 +20,9 @@ namespace FrameworklessServerKata.Tests.CommandTests
         [Fact]
         public void ShouldReturnResponseWithStatusCode200()
         {
-            var command = new UpdatePersonCommand("Michael");
+            var command = new UpdatePersonCommand(_peopleModel);
 
-            var result = command.Execute(_peopleModel, "George");
+            var result = command.Execute("Michael", "George");
             var expected = new Response("200");
 
             var resultJson = JsonConvert.SerializeObject(result);
@@ -33,9 +33,9 @@ namespace FrameworklessServerKata.Tests.CommandTests
         [Fact]
         public void ShouldUpdatePersonNameToGivenName()
         {
-            var command = new UpdatePersonCommand("Michael");
+            var command = new UpdatePersonCommand(_peopleModel);
 
-            command.Execute(_peopleModel, "George");
+            command.Execute("Michael", "George");
             var result = _peopleModel.People.Select(p => p.Name).ToList();
             var expected = new List<string>{"David", "George", "Will"};
             
@@ -45,9 +45,9 @@ namespace FrameworklessServerKata.Tests.CommandTests
         [Fact]
         public void ShouldCreateNewPersonIfPersonNotInPeople()
         {
-            var command = new UpdatePersonCommand("John");
+            var command = new UpdatePersonCommand(_peopleModel);
 
-            command.Execute(_peopleModel);
+            command.Execute("John");
             var result = _peopleModel.People.Select(p => p.Name).ToList();
             var expected = new List<string>{"David", "Michael", "Will", "John"};
             
