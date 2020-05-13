@@ -21,12 +21,12 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Put()
         {
-            throw new System.NotImplementedException();
+            return new Response(400);
         }
 
         public override Response Delete()
         {
-            throw new System.NotImplementedException();
+            return new Response(400);
         }
     }
 }

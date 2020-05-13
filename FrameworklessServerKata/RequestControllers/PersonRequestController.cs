@@ -13,7 +13,7 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Post()
         {
-            throw new System.NotImplementedException();
+            return new Response(400);
         }
 
         public override Response Put()
