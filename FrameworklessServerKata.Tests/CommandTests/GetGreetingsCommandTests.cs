@@ -1,6 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 using FrameworklessServerKata.Commands;
 using Newtonsoft.Json;
 using Xunit;
@@ -21,9 +19,9 @@ namespace FrameworklessServerKata.Tests.CommandTests
         [Fact]
         public void ShouldReturnCorrectResponseWhenExecuted()
         {
-            var command = new GetGreetingsCommand();
+            var command = new GetGreetingsCommand(_peopleModel);
 
-            var result = command.Execute(_peopleModel);
+            var result = command.Execute();
             var responseBody =
                 $"Hello David, Michael, Will - the time on the server is {DateTime.Now.ToShortTimeString()} on " +
                 $"{DateTime.Now.ToLongDateString()}";
