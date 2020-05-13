@@ -9,13 +9,13 @@ namespace FrameworklessServerKata.Commands
             _peopleModel = peopleModel;
         }
 
-        public Response Execute(string reqParam="", string reqBody = "")
+        public Response Execute(string urlPersonSegment = "", string requestBody = "")
         {
-            var person = _peopleModel.Find(reqParam);
+            var person = _peopleModel.Find(urlPersonSegment);
             if (person == null)
-                _peopleModel.Add(reqParam);
+                _peopleModel.Add(urlPersonSegment);
             else
-                person.Name = reqBody;
+                person.Name = requestBody;
             return new Response(200);
         }
     }

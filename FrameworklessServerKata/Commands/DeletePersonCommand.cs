@@ -11,11 +11,11 @@ namespace FrameworklessServerKata.Commands
             _peopleModel = peopleModel;
         }
         
-        public Response Execute(string reqParam = "", string reqBody = "")
+        public Response Execute(string urlPersonSegment = "", string requestBody = "")
         {
             try
             {
-                _peopleModel.Delete(reqParam);
+                _peopleModel.Delete(urlPersonSegment);
             }
             catch (ArgumentException)
             {

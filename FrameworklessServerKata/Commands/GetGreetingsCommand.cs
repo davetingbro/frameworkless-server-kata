@@ -13,7 +13,7 @@ namespace FrameworklessServerKata.Commands
             _peopleModel = peopleModel;
         }
 
-        public Response Execute(string reqParam="", string reqBody = "")
+        public Response Execute(string urlPersonSegment = "", string requestBody = "")
         {
             var responseBody = GetResponseBody(_peopleModel.People);
             return new Response(200, responseBody);
