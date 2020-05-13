@@ -1,3 +1,4 @@
+using System.Net;
 using FrameworklessServerKata.Commands;
 
 namespace FrameworklessServerKata.RequestControllers
@@ -14,7 +15,7 @@ namespace FrameworklessServerKata.RequestControllers
             return command.Execute();
         }
 
-        public override Response Post()
+        public override Response Post(string body)
         {
             throw new System.NotImplementedException();
         }

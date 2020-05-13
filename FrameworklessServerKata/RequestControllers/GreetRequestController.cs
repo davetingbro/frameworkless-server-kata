@@ -13,7 +13,7 @@ namespace FrameworklessServerKata.RequestControllers
             return command.Execute();
         }
 
-        public override Response Post()
+        public override Response Post(string body)
         {
             return new Response(400);
         }
