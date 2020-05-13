@@ -17,7 +17,8 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Post(string body)
         {
-            throw new System.NotImplementedException();
+            var command = new AddToPeopleCommand(PeopleModel);
+            return command.Execute(requestBody: body);
         }
 
         public override Response Put()
