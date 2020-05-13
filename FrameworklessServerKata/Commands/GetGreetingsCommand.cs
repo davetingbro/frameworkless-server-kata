@@ -19,12 +19,6 @@ namespace FrameworklessServerKata.Commands
             return new Response("200", responseBody);
         }
 
-        public Response Execute(PeopleModel peopleModel, string body = "")
-        {
-            var responseBody = GetResponseBody(peopleModel.People);
-            return new Response("200", responseBody);
-        }
-
         private static string GetResponseBody(List<Person> people)
         {
             var names = string.Join(", ", people.Select(p => p.Name));
