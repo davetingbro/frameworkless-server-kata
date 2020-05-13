@@ -8,12 +8,14 @@ namespace FrameworklessServerKata.Tests
     public class RoutingTableTests
     {
         private readonly RoutingTable _routingTable;
-        private readonly List<Person> _people;
+        private readonly PeopleModel _peopleModel;
 
         public RoutingTableTests()
         {
             _routingTable = new RoutingTable();
-            _people = new List<Person> {new Person("David"), new Person("Michael"), new Person("Will")};
+            _peopleModel = new PeopleModel();
+            _peopleModel.Add("Michael");
+            _peopleModel.Add("Will");
         }
         
         [Theory]
@@ -22,7 +24,7 @@ namespace FrameworklessServerKata.Tests
         [InlineData("http://localhost:8080/people/david", typeof(PersonRequestController))]
         public void ShouldReturnCorrectRequestController_WhenGivenValidUrl(string url, Type expectedType)
         {
-            var result = _routingTable.GetRequestController(url, _people);
+            var result = _routingTable.GetRequestController(url, _peopleModel);
 
             Assert.IsType(expectedType, result);
         }
@@ -33,7 +35,7 @@ namespace FrameworklessServerKata.Tests
 
         public void ShouldThrowArgumentException_WhenGivenInvalidUrl(string url)
         {
-            Assert.Throws<ArgumentException>(() => _routingTable.GetRequestController(url, _people));
+            Assert.Throws<ArgumentException>(() => _routingTable.GetRequestController(url, _peopleModel));
         }
     }
 }

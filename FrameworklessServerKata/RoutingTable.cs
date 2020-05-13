@@ -1,32 +1,30 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using FrameworklessServerKata.Interface;
 using FrameworklessServerKata.RequestControllers;
 
 namespace FrameworklessServerKata
 {
     public class RoutingTable
     {
-        public IRequestController GetRequestController(string url, List<Person> people)
+        public RequestController GetRequestController(string url, PeopleModel peopleModel)
         {
             return url switch
             {
-                "http://localhost:8080/" => new GreetRequestController(),
-                "http://localhost:8080/people" => new PeopleRequestController(),
+                "http://localhost:8080/" => new GreetRequestController(peopleModel, url),
+                "http://localhost:8080/people" => new PeopleRequestController(peopleModel, url),
                 _ when Regex.IsMatch(url, @"http://localhost:8080/people/\w+") 
-                        => GetPersonRequestController(url, people),
+                        => GetPersonRequestController(url, peopleModel),
                 _ => throw new ArgumentException("url not found")
             };
         }
 
-        private IRequestController GetPersonRequestController(string url, List<Person> people)
+        private RequestController GetPersonRequestController(string url, PeopleModel peopleModel)
         {
-            var personUrls = people.Select(p 
+            var personUrls = peopleModel.People.Select(p 
                 => $"http://localhost:8080/people/{p.Name.ToLower()}");
             return personUrls.Contains(url)
-                ? new PersonRequestController()
+                ? new PersonRequestController(peopleModel, url)
                 : throw new ArgumentException("url not found");
         }
     }
