@@ -6,7 +6,7 @@ namespace FrameworklessServerKata.Commands
 {
     public class GetGreetingsCommand : ICommand
     {
-        public Response Execute(PeopleModel peopleModel)
+        public Response Execute(PeopleModel peopleModel, string body = "")
         {
             var responseBody = GetResponseBody(peopleModel.People);
             return new Response(responseBody, "200");

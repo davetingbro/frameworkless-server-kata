@@ -2,6 +2,6 @@ namespace FrameworklessServerKata.Commands
 {
     public interface ICommand
     {
-        Response Execute(PeopleModel peopleModel);
+        Response Execute(PeopleModel peopleModel, string body = "");
     }
 }
