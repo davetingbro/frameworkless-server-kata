@@ -1,31 +1,27 @@
-using System.Net;
-using FrameworklessServerKata.Interface;
-
 namespace FrameworklessServerKata.RequestControllers
 {
-    public class PersonRequestController : IRequestController
+    public class PersonRequestController : RequestController
     {
-        public Response Get(HttpListenerRequest request, PeopleModel peopleModel)
+        public PersonRequestController(PeopleModel peopleModel, string url) : base(peopleModel, url)
+        {
+        }
+
+        public override Response Get()
         {
             throw new System.NotImplementedException();
         }
 
-        public Response Create(HttpListenerRequest request, PeopleModel peopleModel)
+        public override Response Post()
         {
             throw new System.NotImplementedException();
         }
 
-        public Response Update(HttpListenerRequest request, PeopleModel peopleModel)
+        public override Response Put()
         {
             throw new System.NotImplementedException();
         }
 
-        public Response Delete(HttpListenerRequest request, PeopleModel peopleModel)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Response Head(HttpListenerRequest request, PeopleModel peopleModel)
+        public override Response Delete()
         {
             throw new System.NotImplementedException();
         }

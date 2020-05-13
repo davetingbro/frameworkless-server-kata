@@ -1,31 +1,29 @@
-using System.Net;
-using FrameworklessServerKata.Interface;
-
+using FrameworklessServerKata.Commands;
 namespace FrameworklessServerKata.RequestControllers
 {
-    public class GreetRequestController : IRequestController
+    public class GreetRequestController : RequestController
     {
-        public Response Get(HttpListenerRequest request, PeopleModel peopleModel)
+        public GreetRequestController(PeopleModel peopleModel, string url) : base(peopleModel, url)
+        {
+        }
+
+        public override Response Get()
+        {
+            var command = new GetGreetingsCommand(PeopleModel);
+            return command.Execute();
+        }
+
+        public override Response Post()
         {
             throw new System.NotImplementedException();
         }
 
-        public Response Create(HttpListenerRequest request, PeopleModel peopleModel)
+        public override Response Put()
         {
             throw new System.NotImplementedException();
         }
 
-        public Response Update(HttpListenerRequest request, PeopleModel peopleModel)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Response Delete(HttpListenerRequest request, PeopleModel peopleModel)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Response Head(HttpListenerRequest request, PeopleModel peopleModel)
+        public override Response Delete()
         {
             throw new System.NotImplementedException();
         }
