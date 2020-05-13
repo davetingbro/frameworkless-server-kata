@@ -27,7 +27,7 @@ namespace FrameworklessServerKata.Tests.CommandTests
             var responseBody =
                 $"Hello David, Michael, Will - the time on the server is {DateTime.Now.ToShortTimeString()} on " +
                 $"{DateTime.Now.ToLongDateString()}";
-            var expected = new Response(responseBody, "200");
+            var expected = new Response("200", responseBody);
 
             var resultJson = JsonConvert.SerializeObject(result);
             var expectedJson = JsonConvert.SerializeObject(expected);

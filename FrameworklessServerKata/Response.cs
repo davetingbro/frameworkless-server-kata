@@ -5,7 +5,7 @@ namespace FrameworklessServerKata
         public string Body { get; }
         public string StatusCode { get; }
 
-        public Response(string body, string statusCode)
+        public Response(string statusCode, string body="")
         {
             Body = body;
             StatusCode = statusCode;

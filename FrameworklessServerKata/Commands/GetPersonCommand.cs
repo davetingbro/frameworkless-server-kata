@@ -12,7 +12,7 @@ namespace FrameworklessServerKata.Commands
         public Response Execute(PeopleModel peopleModel, string body="")
         {
             var person = peopleModel.Find(_personName);
-            return new Response(person.Name, "200");
+            return new Response("200", person.Name);
         }
     }
 }
