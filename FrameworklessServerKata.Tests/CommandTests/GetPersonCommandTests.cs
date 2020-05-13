@@ -18,9 +18,9 @@ namespace FrameworklessServerKata.Tests.CommandTests
         [Fact]
         public void ShouldReturnCorrectResponseWhenExecuted()
         {
-            var command = new GetPersonCommand("Michael");
+            var command = new GetPersonCommand(_peopleModel);
 
-            var result = command.Execute(_peopleModel);
+            var result = command.Execute("Michael");
             var expected = new Response("200", "Michael");
 
             var resultJson = JsonConvert.SerializeObject(result);
