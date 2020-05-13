@@ -1,3 +1,5 @@
+using FrameworklessServerKata.Commands;
+
 namespace FrameworklessServerKata.RequestControllers
 {
     public class PeopleRequestController : RequestController
@@ -8,7 +10,8 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Get()
         {
-            throw new System.NotImplementedException();
+            var command = new GetPeopleCommand(PeopleModel);
+            return command.Execute();
         }
 
         public override Response Post()

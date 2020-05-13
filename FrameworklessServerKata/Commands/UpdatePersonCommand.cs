@@ -16,7 +16,7 @@ namespace FrameworklessServerKata.Commands
                 _peopleModel.Add(reqParam);
             else
                 person.Name = reqBody;
-            return new Response("200");
+            return new Response(200);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace FrameworklessServerKata.Commands
             }
             catch (ArgumentException)
             {
-                return new Response("400");
+                return new Response(400);
             }
-            return new Response("204");
+            return new Response(204);
         }
     }
 }

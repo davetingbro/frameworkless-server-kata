@@ -21,7 +21,7 @@ namespace FrameworklessServerKata.Tests.CommandTests
             var command = new GetPersonCommand(_peopleModel);
 
             var result = command.Execute("Michael");
-            var expected = new Response("200", "Michael");
+            var expected = new Response(200, "Michael");
 
             var resultJson = JsonConvert.SerializeObject(result);
             var expectedJson = JsonConvert.SerializeObject(expected);

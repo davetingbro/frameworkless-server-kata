@@ -14,7 +14,7 @@ namespace FrameworklessServerKata.Commands
         public Response Execute(string reqParam="", string reqBody = "")
         {
             var names = string.Join(", ", _peopleModel.People.Select(p => p.Name));
-            return new Response("200", names);
+            return new Response(200, names);
         }
     }
 }

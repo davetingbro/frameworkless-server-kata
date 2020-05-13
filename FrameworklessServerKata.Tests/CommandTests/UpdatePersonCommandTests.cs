@@ -23,7 +23,7 @@ namespace FrameworklessServerKata.Tests.CommandTests
             var command = new UpdatePersonCommand(_peopleModel);
 
             var result = command.Execute("Michael", "George");
-            var expected = new Response("200");
+            var expected = new Response(200);
 
             var resultJson = JsonConvert.SerializeObject(result);
             var expectedJson = JsonConvert.SerializeObject(expected);

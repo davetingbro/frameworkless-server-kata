@@ -23,7 +23,7 @@ namespace FrameworklessServerKata.Tests.CommandTests
             var command = new DeletePersonCommand(_peopleModel);
 
             var result = command.Execute("Michael");
-            var expected = new Response("204");
+            var expected = new Response(204);
 
             var resultJson = JsonConvert.SerializeObject(result);
             var expectedJson = JsonConvert.SerializeObject(expected);
@@ -49,7 +49,7 @@ namespace FrameworklessServerKata.Tests.CommandTests
 
             var response = command.Execute("David");
             
-            Assert.Equal("400", response.StatusCode);
+            Assert.Equal(400, response.StatusCode);
         }
     }
 }
