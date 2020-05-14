@@ -1,14 +1,19 @@
+using FrameworklessServerKata.Commands;
+
 namespace FrameworklessServerKata.RequestControllers
 {
     public class PersonRequestController : RequestController
     {
-        public PersonRequestController(PeopleModel peopleModel) : base(peopleModel)
+        private readonly string _personName;
+        public PersonRequestController(PeopleModel peopleModel, string personName) : base(peopleModel)
         {
+            _personName = personName;
         }
 
         public override Response Get()
         {
-            throw new System.NotImplementedException();
+            var command = new GetPersonCommand(PeopleModel);
+            return command.Execute(_personName);
         }
 
         public override Response Post(string body)
@@ -16,9 +21,14 @@ namespace FrameworklessServerKata.RequestControllers
             return new Response(400);
         }
 
-        public override Response Put()
+        public override Response Put(string body)
         {
-            throw new System.NotImplementedException();
+            var person = PeopleModel.Find(_personName);
+            if (person == null)
+                PeopleModel.Add(_personName);
+            else
+                person.Name = body;
+            return new Response(200);
         }
 
         public override Response Delete()
