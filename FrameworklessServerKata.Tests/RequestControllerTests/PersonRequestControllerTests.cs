@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FrameworklessServerKata.RequestControllers;
@@ -28,6 +29,13 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
             var resultJson = JsonConvert.SerializeObject(result);
             var expectedJson = JsonConvert.SerializeObject(expected);
             Assert.Equal(expectedJson, resultJson);
+        }
+
+        [Fact]
+        public void Get_ShouldThrowArgumentExceptionIfPersonNotInPeople()
+        {
+            var controller = new PersonRequestController(_peopleModel, "does_not_exist");
+            Assert.Throws<ArgumentException>(() => controller.Get());
         }
         
         [Fact]

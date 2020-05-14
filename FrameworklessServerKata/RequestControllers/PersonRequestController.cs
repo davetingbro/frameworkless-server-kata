@@ -13,7 +13,7 @@ namespace FrameworklessServerKata.RequestControllers
         public override Response Get()
         {
             var person = PeopleModel.Find(_personName);
-            return new Response(200, person.Name);
+            return person != null ? new Response(200, person.Name) : throw new ArgumentException();
         }
 
         public override Response Post(string body)
