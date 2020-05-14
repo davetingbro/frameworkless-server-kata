@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using FrameworklessServerKata.RequestControllers;
 using Xunit;
 
@@ -31,8 +30,6 @@ namespace FrameworklessServerKata.Tests
 
         [Theory]
         [InlineData("http://localhost:3000/")]
-        [InlineData("http://localhost:8080/people/fake_person")]
-
         public void ShouldThrowArgumentException_WhenGivenInvalidUrl(string url)
         {
             Assert.Throws<ArgumentException>(() => _routingTable.GetRequestController(url, _peopleModel));
