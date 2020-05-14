@@ -1,5 +1,4 @@
 using System;
-using FrameworklessServerKata.Commands;
 
 namespace FrameworklessServerKata.RequestControllers
 {
@@ -13,8 +12,8 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Get()
         {
-            var command = new GetPersonCommand(PeopleModel);
-            return command.Execute(_personName);
+            var person = PeopleModel.Find(_personName);
+            return new Response(200, person.Name);
         }
 
         public override Response Post(string body)
