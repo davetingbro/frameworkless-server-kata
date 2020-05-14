@@ -21,7 +21,7 @@ namespace FrameworklessServerKata.RequestControllers
             return command.Execute(requestBody: body);
         }
 
-        public override Response Put()
+        public override Response Put(string body)
         {
             return new Response(400);
         }

@@ -13,7 +13,7 @@ namespace FrameworklessServerKata.RequestControllers
 
         public abstract Response Get();
         public abstract Response Post(string body);
-        public abstract Response Put();
+        public abstract Response Put(string body);
         public abstract Response Delete();
     }
 }
