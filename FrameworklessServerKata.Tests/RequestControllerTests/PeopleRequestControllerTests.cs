@@ -83,5 +83,21 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
             
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void Put_ShouldReturnResponseStatusCode400()
+        {
+            var controller = new PeopleRequestController(_peopleModel);
+            var result = controller.Put("fake_body");
+            Assert.Equal(400, result.StatusCode);
+        }
+
+        [Fact]
+        public void Delete_ShouldReturnResponseStatusCode400()
+        {
+            var controller = new PeopleRequestController(_peopleModel);
+            var result = controller.Delete();
+            Assert.Equal(400, result.StatusCode);
+        }
     }
 }
