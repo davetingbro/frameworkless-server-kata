@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net;
 using FrameworklessServerKata.Commands;
 
@@ -11,14 +12,16 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Get()
         {
-            var command = new GetPeopleCommand(PeopleModel);
-            return command.Execute();
+            var names = string.Join(", ", PeopleModel.People.Select(p => p.Name));
+            return new Response(200, names);
         }
 
         public override Response Post(string body)
         {
-            var command = new AddToPeopleCommand(PeopleModel);
-            return command.Execute(requestBody: body);
+            if (PeopleModel.People.Any(p => p.Name == body) || body == "") 
+                return new Response(202);
+            PeopleModel.Add(body);
+            return new Response(201, body);
         }
 
         public override Response Put(string body)
