@@ -1,6 +1,4 @@
 using System.Linq;
-using System.Net;
-using FrameworklessServerKata.Commands;
 
 namespace FrameworklessServerKata.RequestControllers
 {
