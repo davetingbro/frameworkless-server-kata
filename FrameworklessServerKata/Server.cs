@@ -19,7 +19,7 @@ namespace FrameworklessServerKata
         public void Start()
         {
             _listener.Start();
-            while (true)
+            while (_listener.IsListening)
             {
                 var context = _listener.GetContext();
                 var httpRequest = context.Request;
