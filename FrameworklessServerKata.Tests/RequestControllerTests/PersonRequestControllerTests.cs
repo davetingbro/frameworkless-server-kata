@@ -98,5 +98,13 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
             
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void Post_ShouldReturnResponseStatusCode400()
+        {
+            var controller = new PersonRequestController(_peopleModel, "Michael");
+            var result = controller.Post("fake_body");
+            Assert.Equal(400, result.StatusCode);
+        }
     }
 }
