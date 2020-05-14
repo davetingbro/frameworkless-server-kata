@@ -3,7 +3,7 @@ namespace FrameworklessServerKata.RequestControllers
 {
     public class GreetRequestController : RequestController
     {
-        public GreetRequestController(PeopleModel peopleModel, string url) : base(peopleModel, url)
+        public GreetRequestController(PeopleModel peopleModel) : base(peopleModel)
         {
         }
 

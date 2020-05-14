@@ -5,12 +5,10 @@ namespace FrameworklessServerKata.RequestControllers
     public abstract class RequestController
     {
         protected readonly PeopleModel PeopleModel;
-        protected readonly string Url;
 
-        protected RequestController(PeopleModel peopleModel, string url)
+        protected RequestController(PeopleModel peopleModel)
         {
             PeopleModel = peopleModel;
-            Url = url;
         }
 
         public abstract Response Get();

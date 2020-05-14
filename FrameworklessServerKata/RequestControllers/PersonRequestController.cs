@@ -2,7 +2,7 @@ namespace FrameworklessServerKata.RequestControllers
 {
     public class PersonRequestController : RequestController
     {
-        public PersonRequestController(PeopleModel peopleModel, string url) : base(peopleModel, url)
+        public PersonRequestController(PeopleModel peopleModel) : base(peopleModel)
         {
         }
 
