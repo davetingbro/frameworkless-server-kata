@@ -1,3 +1,4 @@
+using System;
 using FrameworklessServerKata.Commands;
 
 namespace FrameworklessServerKata.RequestControllers
@@ -33,7 +34,15 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Delete()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                PeopleModel.Delete(_personName);
+            }
+            catch (ArgumentException)
+            {
+                return new Response(400);
+            }
+            return new Response(204);
         }
     }
 }
