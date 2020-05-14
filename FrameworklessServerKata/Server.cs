@@ -51,7 +51,7 @@ namespace FrameworklessServerKata
             {
                 "GET" => controller.Get(),
                 "POST" => controller.Post(body),
-                "PUT" => controller.Put(),
+                "PUT" => controller.Put(body),
                 "DELETE" => controller.Delete(),
                 _ => new Response(404)
             };
