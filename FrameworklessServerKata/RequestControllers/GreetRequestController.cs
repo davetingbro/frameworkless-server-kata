@@ -1,4 +1,5 @@
-using FrameworklessServerKata.Commands;
+using System;
+using System.Linq;
 namespace FrameworklessServerKata.RequestControllers
 {
     public class GreetRequestController : RequestController
@@ -9,8 +10,11 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Get()
         {
-            var command = new GetGreetingsCommand(PeopleModel);
-            return command.Execute();
+            var names = string.Join(", ", PeopleModel.People.Select(p => p.Name));
+            var time = DateTime.Now.ToShortTimeString();
+            var date = DateTime.Now.ToLongDateString();
+            var responseBody = $"Hello {names} - the time on the server is {time} on {date}";
+            return new Response(200, responseBody);
         }
 
         public override Response Post(string body)
