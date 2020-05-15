@@ -19,17 +19,17 @@ namespace FrameworklessServerKata.RequestControllers
 
         public override Response Post(string body)
         {
-            return new Response(400);
+            return new Response(405);
         }
 
         public override Response Put(string body)
         {
-            return new Response(400);
+            return new Response(405);
         }
 
         public override Response Delete()
         {
-            return new Response(400);
+            return new Response(405);
         }
     }
 }

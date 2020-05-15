@@ -59,7 +59,7 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
 
             var result = controller.Post("David");
             
-            Assert.Equal(202, result.StatusCode);
+            Assert.Equal(200, result.StatusCode);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
 
             var result = controller.Post("");
             
-            Assert.Equal(202, result.StatusCode);
+            Assert.Equal(200, result.StatusCode);
         }
 
         [Fact]
@@ -85,19 +85,19 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
 
         [Fact]
-        public void Put_ShouldReturnResponseStatusCode400()
+        public void Put_ShouldReturnResponseStatusCode405()
         {
             var controller = new PeopleRequestController(_peopleModel);
             var result = controller.Put("fake_body");
-            Assert.Equal(400, result.StatusCode);
+            Assert.Equal(405, result.StatusCode);
         }
 
         [Fact]
-        public void Delete_ShouldReturnResponseStatusCode400()
+        public void Delete_ShouldReturnResponseStatusCode405()
         {
             var controller = new PeopleRequestController(_peopleModel);
             var result = controller.Delete();
-            Assert.Equal(400, result.StatusCode);
+            Assert.Equal(405, result.StatusCode);
         }
     }
 }

@@ -108,11 +108,11 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
 
         [Fact]
-        public void Post_ShouldReturnResponseStatusCode400()
+        public void Post_ShouldReturnResponseStatusCode405()
         {
             var controller = new PersonRequestController(_peopleModel, "Michael");
             var result = controller.Post("fake_body");
-            Assert.Equal(400, result.StatusCode);
+            Assert.Equal(405, result.StatusCode);
         }
     }
 }

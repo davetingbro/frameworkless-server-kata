@@ -33,27 +33,27 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
 
         [Fact]
-        public void PostShouldReturnResponseWithStatusCode400()
+        public void PostShouldReturnResponseWithStatusCode405()
         {
             var controller = new GreetRequestController(_peopleModel);
             var result = controller.Post("fake_body");
-            Assert.Equal(400, result.StatusCode);
+            Assert.Equal(405, result.StatusCode);
         }
         
         [Fact]
-        public void PutShouldReturnResponseWithStatusCode400()
+        public void PutShouldReturnResponseWithStatusCode405()
         {
             var controller = new GreetRequestController(_peopleModel);
             var result = controller.Put("fake_body");
-            Assert.Equal(400, result.StatusCode);
+            Assert.Equal(405, result.StatusCode);
         }
         
         [Fact]
-        public void DeleteShouldReturnResponseWithStatusCode400()
+        public void DeleteShouldReturnResponseWithStatusCode405()
         {
             var controller = new GreetRequestController(_peopleModel);
             var result = controller.Delete();
-            Assert.Equal(400, result.StatusCode);
+            Assert.Equal(405, result.StatusCode);
         }
     }
 }
