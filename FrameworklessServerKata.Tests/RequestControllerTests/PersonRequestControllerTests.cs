@@ -61,13 +61,13 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
 
         [Fact]
-        public void Delete_ShouldReturnResponseWithStatusCode400_IfDeletingWorldOwner()
+        public void Delete_ShouldReturnResponseWithStatusCode403_IfDeletingWorldOwner()
         {
             var controller = new PersonRequestController(_peopleModel, "David");
 
             var response = controller.Delete();
             
-            Assert.Equal(400, response.StatusCode);
+            Assert.Equal(403, response.StatusCode);
         }
         
         [Fact]

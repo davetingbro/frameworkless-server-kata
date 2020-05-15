@@ -39,7 +39,7 @@ namespace FrameworklessServerKata.RequestControllers
             }
             catch (ArgumentException)
             {
-                return new Response(400);
+                return new Response(403);
             }
             return new Response(204);
         }
