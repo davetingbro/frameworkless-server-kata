@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using FrameworklessServerKata.RequestControllers;
@@ -85,15 +84,12 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
 
         [Fact]
-        public void Put_ShouldCreateNewPersonIfPersonNotInPeople()
+        public void Put_ShouldReturnResponseCode404IfPersonNotInPeople()
         {
             var controller = new PersonRequestController(_peopleModel, "John");
-
-            controller.Put("");
-            var result = _peopleModel.People.Select(p => p.Name).ToList();
-            var expected = new List<string>{"David", "Michael", "Will", "John"};
+            var result = controller.Put("John2");
             
-            Assert.Equal(expected, result);
+            Assert.Equal(404, result.StatusCode);
         }
 
         [Fact]

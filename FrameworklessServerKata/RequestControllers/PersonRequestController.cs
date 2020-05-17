@@ -24,9 +24,8 @@ namespace FrameworklessServerKata.RequestControllers
         {
             var person = PeopleModel.Find(_personName);
             if (person == null)
-                PeopleModel.Add(_personName);
-            else
-                person.Name = body;
+                return new Response(404);
+            person.Name = body;
             return new Response(200);
         }
 
