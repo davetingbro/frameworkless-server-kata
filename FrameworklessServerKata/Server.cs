@@ -62,6 +62,10 @@ namespace FrameworklessServerKata
             var buffer = System.Text.Encoding.UTF8.GetBytes(response.Body);
             var httpResponse = context.Response;
             httpResponse.StatusCode = response.StatusCode;
+            foreach (var (key, value) in response.Headers)
+            {
+                httpResponse.AddHeader(key, value);
+            }
             httpResponse.ContentLength64 = buffer.Length;
             httpResponse.OutputStream.Write(buffer, 0, buffer.Length);
             httpResponse.OutputStream.Close();
