@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using FrameworklessServerKata.RequestControllers;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace FrameworklessServerKata.Tests.RequestControllerTests
@@ -59,16 +58,22 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
         
         [Fact]
-        public void Put_ShouldReturnResponseWithStatusCode200()
+        public void Put_ShouldReturnResponseStatusCode301()
         {
             var controller = new PersonRequestController(_peopleModel, "Michael");
+            var result = controller.Put("Michael2");
 
-            var result = controller.Put("George");
-            var expected = new Response(200);
+            Assert.Equal(301, result.StatusCode);
+        }
 
-            var resultJson = JsonConvert.SerializeObject(result);
-            var expectedJson = JsonConvert.SerializeObject(expected);
-            Assert.Equal(expectedJson, resultJson);
+        [Fact]
+        public void Put_ShouldSetLocationHeaderToUrlOfNewResource()
+        {
+            var controller = new PersonRequestController(_peopleModel, "Michael");
+            var result = controller.Put("Michael2");
+            var expected = new Dictionary<string, string>{{"Location", "http://localhost:8080/people/Michael2"}};
+            
+            Assert.Equal(expected, result.Headers);
         }
 
         [Fact]

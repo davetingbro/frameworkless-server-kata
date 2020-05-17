@@ -26,7 +26,9 @@ namespace FrameworklessServerKata.RequestControllers
             if (person == null)
                 return new Response(404);
             person.Name = body;
-            return new Response(200);
+            var response = new Response(301);
+            response.Headers["Location"] = $"http://localhost:8080/people/{body}";
+            return response;
         }
 
         public override Response Delete()
