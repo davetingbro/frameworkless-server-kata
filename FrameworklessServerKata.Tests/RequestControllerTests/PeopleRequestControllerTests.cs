@@ -53,6 +53,19 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
 
         [Fact]
+        public void Post_ShouldAddLocationHeaderToTheNewResource()
+        {
+            var controller = new PeopleRequestController(_peopleModel);
+            var result = controller.Post("John");
+            var expected = new Dictionary<string, string>
+            {
+                {"Location", "http://localhost:8080/people/John"}
+            };
+            
+            Assert.Equal(expected, result.Headers);
+        }
+
+        [Fact]
         public void PostShouldReturnResponseStatusCode202IfPersonAlreadyExist()
         {
             var controller = new PeopleRequestController(_peopleModel);

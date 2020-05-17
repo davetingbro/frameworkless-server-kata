@@ -19,7 +19,9 @@ namespace FrameworklessServerKata.RequestControllers
             if (PeopleModel.People.Any(p => p.Name == body) || body == "") 
                 return new Response(202);
             PeopleModel.Add(body);
-            return new Response(201, body);
+            var response = new Response(201, body);
+            response.Headers["Location"] = $"http://localhost:8080/people/{body}";
+            return response;
         }
 
         public override Response Put(string body)
