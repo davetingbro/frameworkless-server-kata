@@ -19,25 +19,14 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         }
         
         [Fact]
-        public void Get_ShouldReturnCorrectResponse()
+        public void Get_ShouldReturnResponseStatusCode403()
         {
             var controller = new PersonRequestController(_peopleModel, "Michael");
-
             var result = controller.Get();
-            var expected = new Response(200, "Michael");
-
-            var resultJson = JsonConvert.SerializeObject(result);
-            var expectedJson = JsonConvert.SerializeObject(expected);
-            Assert.Equal(expectedJson, resultJson);
+            
+            Assert.Equal(403, result.StatusCode);
         }
 
-        [Fact]
-        public void Get_ShouldThrowArgumentExceptionIfPersonNotInPeople()
-        {
-            var controller = new PersonRequestController(_peopleModel, "does_not_exist");
-            Assert.Throws<ArgumentException>(() => controller.Get());
-        }
-        
         [Fact]
         public void Delete_ShouldReturnResponseWithStatusCode204()
         {
