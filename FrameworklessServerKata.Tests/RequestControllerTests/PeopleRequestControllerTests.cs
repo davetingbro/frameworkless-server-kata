@@ -56,20 +56,18 @@ namespace FrameworklessServerKata.Tests.RequestControllerTests
         public void PostShouldReturnResponseStatusCode202IfPersonAlreadyExist()
         {
             var controller = new PeopleRequestController(_peopleModel);
-
             var result = controller.Post("David");
             
-            Assert.Equal(200, result.StatusCode);
+            Assert.Equal(202, result.StatusCode);
         }
 
         [Fact]
         public void PostShouldReturnResponseStatusCode202IfRequestBodyIsEmpty()
         {
             var controller = new PeopleRequestController(_peopleModel);
-
             var result = controller.Post("");
             
-            Assert.Equal(200, result.StatusCode);
+            Assert.Equal(202, result.StatusCode);
         }
 
         [Fact]

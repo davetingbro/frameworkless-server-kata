@@ -17,7 +17,7 @@ namespace FrameworklessServerKata.RequestControllers
         public override Response Post(string body)
         {
             if (PeopleModel.People.Any(p => p.Name == body) || body == "") 
-                return new Response(200);
+                return new Response(202);
             PeopleModel.Add(body);
             return new Response(201, body);
         }
